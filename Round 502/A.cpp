@@ -11,6 +11,9 @@ typedef long long int ll;
 #define ForN2(n)  for (ll j=1; j<=n; j++)
 #define ForN3(n)  for (ll k=1; k<=n; k++)
 
+#define finc(i,a,b)  for (ll i=a; i<b; i++)
+#define fdecc(i,a,b)  for (ll i=a; i>=b; i--)
+
 #define mod 1000000007
 #define pb push_back
 #define mp make_pair
@@ -29,6 +32,25 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+
+    ll n=0;
+    cin>>n;
+
+    ll a,b,c,d;
+    cin>>a>>b>>c>>d;
+    ll max = a+b+c+d;
+    ll answer = 1;
+    
+    finc(i,1,n)
+    {
+        cin>>a>>b>>c>>d;
+        if(a+b+c+d>max)
+        {
+            answer++;
+        }
+    }
+
+    cout<<answer<<endl;
 
 
 
