@@ -1,0 +1,69 @@
+
+
+Tue Aug  7 16:50:11 2018
+Command line: TestDisk
+
+TestDisk 7.0, Data Recovery Utility, April 2015
+Christophe GRENIER <grenier@cgsecurity.org>
+http://www.cgsecurity.org
+OS: Linux, kernel 4.4.0-131-generic (#157-Ubuntu SMP Thu Jul 12 15:51:36 UTC 2018) x86_64
+Compiler: GCC 5.3
+ext2fs lib: 1.42.13, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: none, curses lib: ncurses 6.0
+/dev/sda: LBA, HPA, LBA48, DCO support
+/dev/sda: size       1953525168 sectors
+/dev/sda: user_max   1953525168 sectors
+/dev/sda: native_max 1953525168 sectors
+/dev/sda: dco        1953525168 sectors
+Warning: can't get size for Disk /dev/mapper/control - 0 B - 0 sectors, sector size=512
+Hard disk list
+Disk /dev/sda - 1000 GB / 931 GiB - CHS 121601 255 63, sector size=512 - TOSHIBA DT01ACA100, S/N:2862N7NMS, FW:MS2OA810
+Disk /dev/sdb - 15 GB / 14 GiB - CHS 14939 64 32, sector size=512 - SanDisk Cruzer Blade, FW:1.00
+
+Partition table type (auto): EFI GPT
+Disk /dev/sdb - 15 GB / 14 GiB - SanDisk Cruzer Blade
+Partition table type: EFI GPT
+
+Analyse Disk /dev/sdb - 15 GB / 14 GiB - CHS 14939 64 32
+hdr_size=92
+hdr_lba_self=1
+hdr_lba_alt=30595071 (expected 30595071)
+hdr_lba_start=34
+hdr_lba_end=30595038
+hdr_lba_table=2
+hdr_entries=128
+hdr_entsz=128
+Current partition structure:
+ 1 P MS Data                     2048   30595038   30592991 [Microsoft Basic Data]
+
+search_part()
+Disk /dev/sdb - 15 GB / 14 GiB - CHS 14939 64 32
+FAT32 at 0/1/7
+FAT1 : 1452-8917
+FAT2 : 8918-16383
+start_rootdir : 16384 root cluster : 2
+Data : 16384-30595039
+sectors : 30595040
+cluster_size : 32
+no_of_cluster : 955583 (2 - 955584)
+fat_length 7466 calculated 7466
+FAT differs, FAT sectors=0-16/7466
+heads/cylinder 255 (FAT) != 64 (HD)
+sect/track 63 (FAT) != 32 (HD)
+set_FAT_info: name from BS used
+
+FAT32 at 0/1/7
+     MS Data                       38   30595077   30595040 [NO NAME]
+     FAT32, blocksize=16384, 15 GB / 14 GiB
+
+Results
+   P MS Data                       38   30595077   30595040 [NO NAME]
+     FAT32, blocksize=16384, 15 GB / 14 GiB
+
+Hint for advanced users. dmsetup may be used if you prefer to avoid to rewrite the partition table for the moment:
+echo "0 30595040 linear /dev/sdb 38" | dmsetup create test0
+
+interface_write()
+ 1 P MS Data                       38   30595077   30595040 [NO NAME]
+simulate write!
+
+TestDisk exited normally.
