@@ -30,13 +30,54 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    ll n;
-    cin>>n;
-    ll arr[n];
-    ForA1(n)
+    ll n,h,a,b,k;
+    cin>>n>>h>>a>>b>>k;
+    
+    while(k>0)
     {
-        cin>>arr[i];
-    }
 
+        k--;
+        ll ta,fa,tb,fb;
+        cin>>ta>>fa>>tb>>fb;
+
+        ll dif = ta-tb;
+        if(dif<0)
+            dif *=-1;
+
+        
+        ll min = fa>fb?fb:fa;
+        ll max = fa>fb?fa:fb;
+
+        if(dif==0)
+        {
+            cout<<max-min<<endl;
+            continue;
+        }
+
+        ll answer = 0;
+        if(max<a)
+        {
+            answer+= a -min;
+            answer+=dif;
+            answer+= a - max;
+        }
+
+        else if(min>b)
+        {
+            answer+= min-b;
+            answer+=dif;
+            answer+= max-b;
+        }
+
+        else{
+            answer += dif;
+            answer+= max - min;
+        }
+        
+        cout<<answer<<endl;
+        
+
+    }
+    
     return 0;
 }

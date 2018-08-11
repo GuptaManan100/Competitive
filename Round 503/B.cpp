@@ -30,6 +30,28 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    ll n;
+    cin>>n;
+    ll arr[n];
+    ForA1(n)
+    {
+        cin>>arr[i];
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        map<int,int> mapper;
+        int stud = i;
+        mapper[stud]++;
+        while(mapper[stud]!=2)
+        {
+            stud = arr[stud] - 1;
+            mapper[stud]++;
+        }
+        cout<<stud+1<<" ";
+    }
+    cout<<endl;
+
 
     return 0;
 }

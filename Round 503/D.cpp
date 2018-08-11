@@ -30,7 +30,43 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    ll counter = 29;
+    ll n;
+    cin>>n;
+    fflush(stdout);
 
+    ll guess1 = 1;
+    ll guess2 = n/2 + 1;
+
+    while(counter>0)
+    {
+        ll answer1, answer2;
+        cout<<"? "<<guess1<<endl;;
+        fflush(stdout);
+        cin>>answer1;
+        fflush(stdout);
+        cout<<"? "<<guess2<<endl;;
+        fflush(stdout);
+        cin>>answer2;
+        fflush(stdout);
+
+        ll dif = answer2 - answer1;
+        if(dif<0)
+            dif = -1 * dif;
+        if(dif==0)
+        {
+            cout<<"! "<<guess1<<endl;
+            return 0;
+        }
+        //dif = dif-2;
+        dif = dif/2;
+        guess1 += dif;
+        guess2 += dif;
+
+        counter--;
+    }
+
+    cout<<"! -1"<<endl;
 
     return 0;
 }
