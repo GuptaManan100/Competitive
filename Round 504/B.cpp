@@ -30,6 +30,26 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    ll n,k;
+    cin>>n>>k;
+
+    if(k>2*n-1)
+    {
+        cout<<"0"<<endl;
+        return 0;
+    }
+    if(k<=n)
+    {
+        cout<<(k-1)/2<<endl;
+        return 0;
+    }
+
+    else{
+        ll partner = k-n;
+        n = n-partner+1;
+        cout<<(n)/2<<endl;
+    }
+
 
 
     return 0;

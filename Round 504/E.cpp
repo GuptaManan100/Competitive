@@ -30,7 +30,98 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    int n,q;
+    cin>>n>>q;
+    int arr[n];
+    
+    int counter_q = 0;
+    ForA1(n)
+    {
+        cin>>arr[i];
+        if(arr[i]==q)
+        {
+            counter_q++;
+        }
+    }
+    if(n==1)
+    {
+        if(arr[0]==0||arr[0]==q)
+            cout<<"YES"<<endl<<q<<endl;
+        else
+            cout<<"NO"<<endl;
+        return 0;
+    }
+    if(counter_q==0)
+    {
+        ForA1(n)
+        {
+            if(arr[i]==0)
+            {
+                arr[i]=q;
+                break;
+            }
+        }
+    }
+    for(int i=1;i<n-1;i++)
+    {
+        if(arr[i]==0)
+            arr[i] = max(arr[i+1],arr[i-1]);
+    }
+    for(int i=n-2;i>0;i--)
+    {
+        if(arr[i]==0)
+            arr[i] = max(arr[i+1],arr[i-1]);
+    }
+    if(arr[0]==0)
+        arr[0]= arr[1];
+    if(arr[n-1]==0)
+        arr[n-1] = arr[n-2];
 
+    int dec = -1;
+    for(int i=1;i<n;i++)
+    {
+        if(arr[i]<arr[i-1])
+        {
+            if(dec==-1)
+            {
+                dec = i;
+            }
+            else{
+                if(dec!=i-1)
+                {
+                    cout<<"NO"<<endl;
+                    return 0;
+                }
+                dec = i;
+            }
+        }
+        else if(arr[i]==arr[i-1])
+        {
+            if(dec!=-1)
+            {
+                if(dec!=i-1)
+                {
+                    cout<<"NO"<<endl;
+                    return 0;
+                }
+                dec = i;
+            }
+        }
+        else
+        {
+            if(dec!=-1)
+            {
+                cout<<"NO"<<endl;
+                return 0;
+            }
+        }
+    }
 
+    cout<<"YES"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
     return 0;
 }

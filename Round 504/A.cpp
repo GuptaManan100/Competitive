@@ -29,8 +29,55 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    ll n,m;
+    cin>>n>>m;
+    string s,t;
+    cin>>s>>t;
 
+    if(n>m+1)
+    {
+        cout<<"NO"<<endl;
+        return 0;
+    }
 
+    int flag = 1;
+    int pos = -1;
+    ForA1(n)
+    {
+        if(s[i]=='*')
+            pos = i;
+    }
+    if(pos==-1)
+    {
+        if(s==t)
+        {
+            cout<<"YES"<<endl;
+            return 0;
+        }
+        cout<<"NO"<<endl;
+        return 0;
+    }
 
+    for(int i=0;i<pos;i++)
+    {
+        if(s[i]!=t[i])
+        {
+            cout<<"NO"<<endl;
+            return 0;
+        }
+    }
+    int i = n-1;
+    int j = m-1;
+    while(i>pos)
+    {
+        if(s[i]!=t[j])
+        {
+            cout<<"NO"<<endl;
+            return 0;
+        }
+        i--;
+        j--;
+    }
+    cout<<"YES"<<endl;
     return 0;
 }

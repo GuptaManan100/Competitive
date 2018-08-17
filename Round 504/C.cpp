@@ -30,7 +30,47 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    ll n,k;
+    cin>>n>>k;
 
+    string s;
+    cin>>s;
+    int arr[n] = {0};
+    vector<int> opener;
+    
+    ll counter = 0;
+    ll indexer = 0;
+    ForA1(n)
+    {
+        if(s[i] == '(')
+        {
+            opener.push_back(i);
+            counter++;
+        }
+        else{
+            if(counter>0)
+            {
+                counter--;
+                arr[i]=1;
+                arr[opener[indexer]]++;
+                indexer++;
+                k-=2;
+            }
+        }
+        if(k==0)
+        {
+            break;
+        }
+    }
+
+    ForA1(n)
+    {
+        if(arr[i]==1)
+        {
+            cout<<s[i];
+        }
+    }
+    cout<<endl;
 
     return 0;
 }
