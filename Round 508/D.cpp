@@ -30,7 +30,72 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    ll n;
+    cin>>n;
+    if(n==1)
+    {
+        cin>>n;
+        cout<<n<<endl;
+        return 0;
+    }
+    ll arr[n];
+    ll neg = 0;
+    ll zer = 0;
+    ll pos = 0;
+    ForA1(n)
+    {
+        cin>>arr[i];
+        if(arr[i]<0)
+            neg++;
+        else if(arr[i]==0)
+            zer++;
+        else
+            pos++;
+    }
+    if(neg==0)
+    {
+        ll mini = 10000000000;
+        ll sum = 0;
+        for(ll i=0;i<n;i++)
+        {
+            if(arr[i]<mini)
+                mini = arr[i];
+            sum+=arr[i];
+        }
+        ll answer = sum - 2*mini;
+        cout<<answer<<endl;
+        return 0;
 
+    }
+    if(pos==0)
+    {
+        ll maxi = -10000000000;
+        ll sum = 0;
+        for(ll i=0;i<n;i++)
+        {
+            if(arr[i]>maxi)
+                maxi = arr[i];
+            sum-=arr[i];
+        }
+        ll answer = sum+ 2*maxi;
+        cout<<answer<<endl;
+        return 0;
+    }
+
+    ll sum = 0;
+    for(ll i=0;i<n;i++)
+    {
+        if(arr[i]<=0)
+        {
+            sum-= arr[i];
+        }
+        else{
+            sum+=arr[i];
+        }
+    }
+    cout<<sum<<endl;
+
+    
 
     return 0;
 }

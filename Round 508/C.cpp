@@ -30,7 +30,70 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    ll n;
+    cin>>n;
+
+    ll a[n];
+    ll b[n];
+
+    ll score_a = 0;
+    ll score_b= 0;
+
+    ForA1(n)
+    {
+        cin>>a[i];
+    }
+    ForA1(n)
+    {
+        cin>>b[i];
+    }
+    sort(a,a+n);
+    sort(b,b+n);
+
+    ll a_counter = n-1;
+    ll b_counter = n-1;
+
+    while(a_counter!=-1 || b_counter!=-1)
+    {
+        if(b_counter==-1)
+        {
+            score_a+= a[a_counter];
+            a_counter--;
+        }
+        else if(a_counter==-1)
+        {
+            b_counter--;
+        }
+        else if(a[a_counter]>b[b_counter])
+        {
+            score_a+= a[a_counter];
+            a_counter--;
+        }
+        else{
+            b_counter--;
+        }
 
 
+
+        if(a_counter==-1)
+        {
+            score_b+= b[b_counter];
+            b_counter--;
+        }
+        else if(b_counter==-1)
+        {
+            a_counter--;
+        }
+        else if(b[b_counter]>a[a_counter])
+        {
+            score_b+= b[b_counter];
+            b_counter--;
+        }
+        else{
+            a_counter--;
+        }
+    }
+
+    cout<<score_a-score_b<<endl;
     return 0;
 }

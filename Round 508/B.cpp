@@ -30,7 +30,43 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    ll n;
+    cin>>n;
 
+    if(n<3)
+    {
+        cout<<"No"<<endl;
+        return 0;
+    }
+
+    cout<<"Yes"<<endl;
+
+    if(n%2==1)
+    {
+        cout<<"1 "<<n<<endl;
+        cout<<n-1<<" ";
+        for(ll i=1;i<=n-1;i++)
+        {
+            cout<<i<<" ";
+        }
+        cout<<endl;
+        return 0;
+    }
+
+    else
+    {
+        ll sep = n/2;
+        cout<<"1 "<<sep<<endl;
+        cout<<n-1<<" ";
+        for(ll i=1;i<=n;i++)
+        {
+            if(i==sep)
+                continue;
+            cout<<i<<" ";
+        }
+        cout<<endl;
+        return 0;
+    }
 
     return 0;
 }

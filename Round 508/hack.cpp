@@ -25,32 +25,12 @@ typedef long long int ll;
 
 using namespace std;
 
+int a[100000];
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    ll n,k;
-    cin>>n>>k;
-
-    ll arr[k] = {0};
-
-    string s;
-    cin>>s;
-
-    for(ll i=0;i<n;i++)
-    {
-        arr[(int)(s[i]-'A')]++;
-    }
-
-    ll m = n+1;
-
-    for(ll i=0;i<k;i++)
-    {
-        if(arr[i]<m)
-            m = arr[i];
-    }
-    ll answer = m*k;
-    cout<<answer<<endl;
+    cout<<__gcd(1,2)<<endl;
     return 0;
 }
