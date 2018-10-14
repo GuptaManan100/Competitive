@@ -36,6 +36,7 @@ int main()
     vector<ll> fours;
     ll num,sq,sqsq,thr;
     set<ll> prim;
+    set<ll> prim2;
     for(int i=0;i<n;i++)
     {
         cin>>num;
@@ -84,9 +85,13 @@ int main()
         for(ll j=i+1;j<si;j++)
         {
             store = __gcd(fours[i],fours[j]);
-            if(store!=1)
+            if(store!=1 && fours[i]!=fours[j])
             {
                 prim.insert(store);
+            }
+            else if(store!=1)
+            {
+                prim2.insert(store);
             }
         }
     }
@@ -99,6 +104,19 @@ int main()
             {
                 mapper[*itr]++;
                 mapper[(fours[j]/(*itr))]++;
+                fours[j] = 1;
+            }
+        }
+    }
+
+    map<ll,ll> mapper2;
+    for(itr = prim2.begin(); itr!=prim2.end();itr++)
+    {
+        for(ll j=0;j<si;j++)
+        {
+            if(fours[j]==(*itr))
+            {
+                mapper2[*itr]++;
                 fours[j] = 1;
             }
         }
@@ -118,7 +136,16 @@ int main()
 
     for(it = mapper.begin();it!=mapper.end();it++)
     {
-        //cout<<it->first<<" "<<it->second<<endl;
+        // cout<<it->first<<" "<<it->second<<endl;
+        answer*= (it->second+1);
+        answer%=mod;
+    }
+
+    for(it = mapper2.begin();it!=mapper2.end();it++)
+    {
+        // cout<<it->first<<" "<<it->second<<endl;
+        answer*= (it->second+1);
+        answer%=mod;
         answer*= (it->second+1);
         answer%=mod;
     }
